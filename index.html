@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <script src='http://code.jquery.com/jquery-2.0.3.min.js' type='text/javascript'></script>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+  </head>
+  <body>
+    <label for='from'>From</label>
+    <input id='from' type='text'>
+    <label for='to'>To</label>
+    <input id='to' readonly type='text'>
+    <button>Reverse</button>
+  </body>
+  <script>
+    (function() {
+      var dict, key, value;
+    
+      dict = {};
+    
+      dict['ひ'] = 'ガ';
+    
+      dict['ら'] = 'タ';
+    
+      for (key in dict) {
+        value = dict[key];
+        dict[value] = key;
+      }
+    
+      jQuery(function($) {
+        var reverse, reverse_and_translate, translate;
+    
+        translate = function() {
+          var letter, str, _i, _len, _ref;
+    
+          str = '';
+          _ref = $('#from').val();
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            letter = _ref[_i];
+            str += dict[letter] || letter;
+          }
+          return $('#to').val(str);
+        };
+        reverse = function() {
+          return $('#from').val($('#to').val());
+        };
+        reverse_and_translate = function() {
+          return reverse() && translate();
+        };
+        $('#from').on('keyup', translate);
+        return $('button').on('click', reverse_and_translate);
+      });
+    
+    }).call(this);
+  </script>
+</html>

@@ -1,0 +1,37 @@
+%html
+  %head
+    %script(src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript")
+    %meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+
+  %body
+    %label(for='from')From
+    %input#from(type='text')
+
+    %label(for='to')To
+    %input#to(type='text' readonly)
+
+    %button Reverse
+
+  :coffeescript
+    dict = {}
+
+    dict['ひ'] = 'ガ'
+    dict['ら'] = 'タ'
+
+    dict[value] = key for key, value of dict
+
+    jQuery ($) ->
+      translate = ->
+        str = ''
+        str += dict[letter] || letter for letter in $('#from').val()
+
+        $('#to').val(str)
+
+      reverse = ->
+        $('#from').val $('#to').val()
+
+      reverse_and_translate = -> reverse() && translate()
+
+      $('#from').on 'keyup', translate
+      $('button').on 'click', reverse_and_translate
+
