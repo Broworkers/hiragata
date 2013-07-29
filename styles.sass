@@ -1,0 +1,65 @@
+@import "bourbon"
+@import "reset.css"
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic)
+
+$brand-color: #787c73
+$off-white: lighten($brand-color, 45%)
+$font: Source Sans Pro, sans-serif
+
+::selection
+  background-color: rgba($brand-color, .2)
+
+body
+  background-color: $off-white
+  color: darken($brand-color, 20%)
+  font: 400 20px/1.5 $font
+  margin: 0 auto
+  padding: 3em
+  text-align: center
+  width: 40em
+
+#logo
+
+  img
+    margin-bottom: 1em
+    width: 10em
+
+  p
+    color: $brand-color
+    font-size: 1em
+    margin-bottom: 3em
+
+label
+  background-color: $brand-color
+  border-top-left-radius: .5em
+  border-top-right-radius: .5em
+  color: $off-white
+  display: block
+  font-size: 1.2em
+  padding: .4em 0 0
+  position: relative
+  text-transform: uppercase
+
+  span
+    background-color: lighten($brand-color, 10%)
+    border-radius: .5em
+    font-size: .5em
+    padding: .5em 1em
+    position: absolute
+    right: 1em
+    top: 1em
+
+textarea
+  background-color: #fff
+  border: .3em solid $brand-color
+  border-bottom-left-radius: .5em
+  border-bottom-right-radius: .5em
+  color: darken($brand-color, 20%)
+  display: block
+  font: 400 1.5em $font
+  height: 10em
+  margin-bottom: 2em
+  outline: none
+  padding: 1em
+  resize: none
+  width: 100%

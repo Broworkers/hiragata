@@ -1,220 +1,27 @@
 <html>
   <head>
-    <script src='http://code.jquery.com/jquery-2.0.3.min.js' type='text/javascript'></script>
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <link href='styles.css' rel='stylesheet'>
+    <link href='favicon.png' rel='icon'>
+    <script src='http://code.jquery.com/jquery-2.0.3.min.js' type='text/javascript'></script>
+    <script src='scripts.js' type='text/javascript'></script>
+    <title>ひらガタ - Convert hiragana to katakana, and vice versa.</title>
   </head>
   <body>
-    <label for='from'>From</label>
-    <textarea id='from'></textarea>
-    <label for='to'>To</label>
-    <textarea id='to' readonly></textarea>
-    <button>Reverse</button>
+    <div id='logo'>
+      <img alt='Hiragata' src='logo.svg'>
+      <p>Convert hiragana to katakana, and vice versa.</p>
+    </div>
+    <section>
+      <label for='from'>Input</label>
+      <textarea id='from'></textarea>
+    </section>
+    <section>
+      <label for='to'>
+        <span>Read Only</span>
+        Output
+      </label>
+      <textarea id='to' readonly title='Read Only'></textarea>
+    </section>
   </body>
-  <script>
-    (function() {
-      var dict, key, value;
-    
-      dict = {};
-    
-      dict['あ'] = 'ア';
-    
-      dict['い'] = 'イ';
-    
-      dict['う'] = 'ウ';
-    
-      dict['え'] = 'エ';
-    
-      dict['お'] = 'オ';
-    
-      dict['ぁ'] = 'ァ';
-    
-      dict['ぃ'] = 'ィ';
-    
-      dict['ぅ'] = 'ゥ';
-    
-      dict['ぇ'] = 'ェ';
-    
-      dict['ぉ'] = 'ォ';
-    
-      dict['か'] = 'カ';
-    
-      dict['き'] = 'キ';
-    
-      dict['く'] = 'ク';
-    
-      dict['け'] = 'ケ';
-    
-      dict['こ'] = 'コ';
-    
-      dict['が'] = 'ガ';
-    
-      dict['ぎ'] = 'ギ';
-    
-      dict['ぐ'] = 'グ';
-    
-      dict['げ'] = 'ゲ';
-    
-      dict['ご'] = 'ゴ';
-    
-      dict['さ'] = 'サ';
-    
-      dict['し'] = 'シ';
-    
-      dict['す'] = 'ス';
-    
-      dict['せ'] = 'セ';
-    
-      dict['そ'] = 'ソ';
-    
-      dict['ざ'] = 'ザ';
-    
-      dict['じ'] = 'ジ';
-    
-      dict['ず'] = 'ズ';
-    
-      dict['ぜ'] = 'ゼ';
-    
-      dict['ぞ'] = 'ゾ';
-    
-      dict['た'] = 'タ';
-    
-      dict['ち'] = 'チ';
-    
-      dict['つ'] = 'ツ';
-    
-      dict['て'] = 'テ';
-    
-      dict['と'] = 'ト';
-    
-      dict['だ'] = 'ダ';
-    
-      dict['ぢ'] = 'ヂ';
-    
-      dict['づ'] = 'ヅ';
-    
-      dict['で'] = 'デ';
-    
-      dict['ど'] = 'ド';
-    
-      dict['な'] = 'ナ';
-    
-      dict['に'] = 'ニ';
-    
-      dict['ぬ'] = 'ヌ';
-    
-      dict['ね'] = 'ネ';
-    
-      dict['の'] = 'ノ';
-    
-      dict['ま'] = 'マ';
-    
-      dict['み'] = 'ミ';
-    
-      dict['む'] = 'ム';
-    
-      dict['め'] = 'メ';
-    
-      dict['も'] = 'モ';
-    
-      dict['は'] = 'ハ';
-    
-      dict['ひ'] = 'ヒ';
-    
-      dict['ふ'] = 'フ';
-    
-      dict['へ'] = 'ヘ';
-    
-      dict['ほ'] = 'ホ';
-    
-      dict['ば'] = 'バ';
-    
-      dict['び'] = 'ビ';
-    
-      dict['ぶ'] = 'ブ';
-    
-      dict['べ'] = 'ベ';
-    
-      dict['ぼ'] = 'ボ';
-    
-      dict['ぱ'] = 'パ';
-    
-      dict['ぴ'] = 'ピ';
-    
-      dict['ぷ'] = 'プ';
-    
-      dict['ぺ'] = 'ペ';
-    
-      dict['ぽ'] = 'ポ';
-    
-      dict['ら'] = 'ラ';
-    
-      dict['り'] = 'リ';
-    
-      dict['る'] = 'ル';
-    
-      dict['れ'] = 'レ';
-    
-      dict['ろ'] = 'ロ';
-    
-      dict['や'] = 'ヤ';
-    
-      dict['ゆ'] = 'ユ';
-    
-      dict['よ'] = 'ヨ';
-    
-      dict['ゃ'] = 'ャ';
-    
-      dict['ゅ'] = 'ュ';
-    
-      dict['ょ'] = 'ョ';
-    
-      dict['っ'] = 'ッ';
-    
-      dict['わ'] = 'ワ';
-    
-      dict['ゐ'] = 'ヰ';
-    
-      dict['ゑ'] = 'ヱ';
-    
-      dict['を'] = 'ヲ';
-    
-      dict['ん'] = 'ン';
-    
-      dict['ゔ'] = 'ヴ';
-    
-      dict['ゝ'] = 'ヽ';
-    
-      dict['ゞ'] = 'ヾ';
-    
-      for (key in dict) {
-        value = dict[key];
-        dict[value] = key;
-      }
-    
-      jQuery(function($) {
-        var reverse, reverse_and_translate, translate;
-    
-        translate = function() {
-          var letter, str, _i, _len, _ref;
-    
-          str = '';
-          _ref = $('#from').val();
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            letter = _ref[_i];
-            str += dict[letter] || letter;
-          }
-          return $('#to').val(str);
-        };
-        reverse = function() {
-          return $('#from').val($('#to').val());
-        };
-        reverse_and_translate = function() {
-          return reverse() && translate();
-        };
-        $('#from').on('keyup', translate);
-        return $('button').on('click', reverse_and_translate);
-      });
-    
-    }).call(this);
-  </script>
 </html>

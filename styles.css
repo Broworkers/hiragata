@@ -1,0 +1,55 @@
+@import url(reset.css);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic);
+::selection {
+  background-color: rgba(120, 124, 115, 0.2); }
+
+body {
+  background-color: #eaebe9;
+  color: #454742;
+  font: 400 20px/1.5 Source Sans Pro, sans-serif;
+  margin: 0 auto;
+  padding: 3em;
+  text-align: center;
+  width: 40em; }
+
+#logo img {
+  margin-bottom: 1em;
+  width: 10em; }
+#logo p {
+  color: #787c73;
+  font-size: 1em;
+  margin-bottom: 3em; }
+
+label {
+  background-color: #787c73;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  color: #eaebe9;
+  display: block;
+  font-size: 1.2em;
+  padding: 0.4em 0 0;
+  position: relative;
+  text-transform: uppercase; }
+  label span {
+    background-color: #91958d;
+    border-radius: 0.5em;
+    font-size: 0.5em;
+    padding: 0.5em 1em;
+    position: absolute;
+    right: 1em;
+    top: 1em; }
+
+textarea {
+  background-color: white;
+  border: 0.3em solid #787c73;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  color: #454742;
+  display: block;
+  font: 400 1.5em Source Sans Pro, sans-serif;
+  height: 10em;
+  margin-bottom: 2em;
+  outline: none;
+  padding: 1em;
+  resize: none;
+  width: 100%; }
