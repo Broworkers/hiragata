@@ -1,3 +1,5 @@
-# ひら→ガタ
+# ひらガタ
 
-Simple hiragana to katakana converter.
+Convert hiragana to katakana, and vice versa.
+
+http://current.com.br/hiragata/
