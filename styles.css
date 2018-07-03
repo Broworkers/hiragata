@@ -1,55 +1,178 @@
-@import url(reset.css);
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic);
-::selection {
-  background-color: rgba(120, 124, 115, 0.2); }
+:root {
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --color-primary: black;
+  --color-secondary: white;
+}
 
 body {
-  background-color: #eaebe9;
-  color: #454742;
-  font: 400 20px/1.5 Source Sans Pro, sans-serif;
-  margin: 0 auto;
-  padding: 3em;
-  text-align: center;
-  width: 40em; }
+  background-color: #eee;
+  font-family: var(--font);
+  color: var(--color-primary);
+  margin: 0;
+  padding: 0;
+}
 
-#logo img {
-  margin-bottom: 1em;
-  width: 10em; }
-#logo p {
-  color: #787c73;
-  font-size: 1em;
-  margin-bottom: 3em; }
+a {
+  color: var(--color-secondary);
+}
 
-label {
-  background-color: #787c73;
-  border-top-left-radius: 0.5em;
-  border-top-right-radius: 0.5em;
-  color: #eaebe9;
-  display: block;
-  font-size: 1.2em;
-  padding: 0.4em 0 0;
-  position: relative;
-  text-transform: uppercase; }
-  label span {
-    background-color: #91958d;
-    border-radius: 0.5em;
-    font-size: 0.5em;
-    padding: 0.5em 1em;
-    position: absolute;
-    right: 1em;
-    top: 1em; }
+.site-header {
+  align-items: center;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
 
-textarea {
-  background-color: white;
-  border: 0.3em solid #787c73;
-  border-bottom-left-radius: 0.5em;
-  border-bottom-right-radius: 0.5em;
-  color: #454742;
-  display: block;
-  font: 400 1.5em Source Sans Pro, sans-serif;
-  height: 10em;
-  margin-bottom: 2em;
+@media screen and (max-width: 600px) {
+  .site-header {
+    display: block;
+    height: auto;
+    padding: 1rem .5rem;
+    text-align: center;
+  }
+}
+
+.site-content {
+  padding: 1rem;
+}
+
+.site-title {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.site-title__reading {
+  font-size: .2rem;
+  font-weight: 700;
+  letter-spacing: .6em;
+  opacity: .6;
+  text-transform: uppercase;
+}
+
+.site-description {
+  font-size: .75rem;
+  margin: 0;
+  opacity: .8;
+  text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+  .site-description {
+    text-align: center;
+  }
+}
+
+.label {
+  align-items: center;
+  background-color: var(--color-primary);
+  box-sizing: border-box;
+  color: var(--color-secondary);
+  display: flex;
+  height: 2.5rem;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.copy {
+  background: none;
+  border: none;
+  color: var(--color-secondary);
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: .75rem;
+  font-weight: 500;
+  margin: 0;
   outline: none;
-  padding: 1em;
+  padding: 0;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.copy:disabled {
+  cursor: default;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.copy--success {
+  animation: pulse 200ms;
+  color: lime;
+}
+
+.copy--error {
+  animation: pulse 200ms;
+  color: orange;
+}
+
+.grid {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid__item {
+  position: relative;
+}
+
+.grid__item:first-child:after {
+  border: .6rem solid transparent;
+  border-bottom-width: 2rem;
+  border-top-width: 2rem;
+  border-left-color: var(--color-primary);
+  content: "";
+  height: 0;
+  position: absolute;
+  left: 100%;
+  top: calc(50% - 2rem);
+  z-index: 1;
+  width: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .grid__item:first-child:after {
+    border: .6rem solid transparent;
+    border-left-width: 2rem;
+    border-right-width: 2rem;
+    border-top-color: var(--color-primary);
+    top: 100%;
+    left: calc(50% - 2rem);
+  }
+}
+
+.field {
+  background-color: var(--color-secondary);
+  border: .125rem solid;
+  box-sizing: border-box;
+  color: var(--color-primary);
+  display: block;
+  font-family: var(--font);
+  font-size: 1rem;
+  height: calc(100vh - 6rem - 2.5rem);
+  outline: none;
+  padding: 1rem;
   resize: none;
-  width: 100%; }
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .field {
+    height: calc(50vh - 6rem - 2.5rem);
+  }
+}

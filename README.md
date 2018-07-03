@@ -1,3 +1,3 @@
-# ひらガタ
+# ひらガタ (Hiragata)
 
-Convert hiragana to katakana, and vice versa.
+Conversor de hiragana para katakana e vice-versa.
